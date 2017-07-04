@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <v-header></v-header>
-    <div class="header">
-       I am header!
-    </div>
+
     <div class="tab">
-      I am TAB!
+      <div class="tab-item">商品</div>
+      <div class="tab-item">评价</div>
+      <div class="tab-item">商家</div>
     </div>
     <div class="content">
       CONTENT
