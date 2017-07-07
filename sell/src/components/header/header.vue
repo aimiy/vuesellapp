@@ -31,6 +31,7 @@ export default{
 };
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "../../common/stylus/mixin.styl"
 .header
   color: #fff
   background-color :#000000
@@ -49,6 +50,9 @@ export default{
           display inline-block
           width :30px
           height: 18px
+          bg-image('brand')
+          background-size :30px 18px
+          background-repeat :no-repeat
         .name
           font-size :18px
 
