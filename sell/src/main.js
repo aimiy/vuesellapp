@@ -13,7 +13,7 @@ import './common/stylus/index.styl';
 Vue.use(VueRouter);
 Vue.use(VueResource);
 const routes = [
-  {path: '/goods', component: goods},
+  {path: '/goods', component: goods, alias: '/'},
   {path: '/ratings', component: ratings},
   { path: '/seller', component: seller }
 ];
