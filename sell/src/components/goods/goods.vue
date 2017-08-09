@@ -27,18 +27,22 @@
                 <div class="price">
                   <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
+                <div class="cartcontrol-wrapper">
+                  <cartcontrol :food="food"></cartcontrol>
+                </div>
               </div>
             </li>
           </ul>
         </li>
       </ul>
     </div>
-    <shopcart></shopcart>
+    <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
   import shopcart from '../../components/shopcart/shopcart';
+  import cartcontrol from '../cartcontrol/cartcontrol';
 
   const ERR_OK = 0;
   export default{
@@ -64,6 +68,18 @@
               }
           }
           return 0;
+      },
+      selectFoods() {
+          let foods = [];
+          this.goods.forEach((good) => {
+              good.foods.forEach((food) => {
+                  if (food.count) {
+                      foods.push(food);
+                  }
+              });
+          });
+          console.log(foods);
+          return foods;
       }
     },
       created() {
@@ -94,7 +110,8 @@
                   click: true
               });
               this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
-                probeType: 3
+                probeType: 3,
+                click: true
               });
               this.foodsScroll.on('scroll', (pos) => {
                   this.scrollY = Math.abs(Math.round(pos.y));
@@ -112,7 +129,8 @@
       }
     },
     components: {
-          shopcart
+          shopcart,
+          cartcontrol
     }
   };
 </script>
@@ -209,12 +227,17 @@
               margin-right :12px
           .price
             font-weight :700
-            line-height: 48px
+            line-height: 24px
             .now
               margin-right :8px
-              font-size: 20px
+              font-size: 14px
               color: rgb(240, 20, 20)
             .old
-              font-size :16px
+              text-decoration:line-through
+              font-size :10px
               color :rgb(147, 153, 159)
+          .cartcontrol-wrapper
+            position :absolute
+            right :0
+            bottom :12px
 </style>
