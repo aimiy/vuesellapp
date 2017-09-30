@@ -97,7 +97,7 @@
       },
     methods: {
           selectMenu(index, event) {
-              if (event._constructed) {
+              if (!event._constructed) {
                   return;
               }
               let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
