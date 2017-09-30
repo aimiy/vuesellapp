@@ -212,10 +212,15 @@ export default {
       top :0
       z-index :-1
       width :100%
-      &.fold-transition
-        transition :all 2s
-      &.fold-fade-enter, &.fold-fade-leave-to
-        transform : translateY(-100%)
+      transform: translateY(-100%)
+      &.fold-enter-active
+        transition: all 0.8s
+      &.fold-leave-active
+        transition: all 0.8s
+      &.fold-enter
+        transform: translateY(0)
+      &.fold-leave-to
+        transform: translateY(0)
       .list-header
         height: 40px
         line-height 40px
